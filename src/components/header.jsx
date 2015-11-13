@@ -9,6 +9,8 @@ module.exports = React.createClass({
       <Link to={"/"}>Home</Link>
       <br />
       <Link to={"profile"}>Profile</Link>
+      <br />
+      <Link to={"send"}>Send SMS</Link>
     </div>
   }
 })
