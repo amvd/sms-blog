@@ -12,7 +12,7 @@ module.exports = (function(){
 
       var msg = req.body.Body;
 
-      // Extract Post Info
+      // Extract Author/Title Info
 
       var headingBegin = msg.indexOf('[');
       var headingEnd = msg.indexOf(']');
@@ -23,13 +23,16 @@ module.exports = (function(){
 
       var author = postInfo[0];
       var title = postInfo[1];
+
+      // Extract Content
+
       var content = msg.slice(headingEnd + 1).trim();
 
       Posts.findOne({$and: [{author: author}, {title: title}]}, function(err, result){
         if(err) {
           console.log(err);
         } else {
-          if (result === null) { // if null, add new post
+          if (result === null) { // if not in db, add new post
             var newPost = new Posts({
               author: author,
               title: title,
@@ -44,7 +47,7 @@ module.exports = (function(){
                 res.json(response);
               }
             })
-          } else {
+          } else { // append message to post, update date
             result.body += " " + content;
             result.updated_at = new Date();
             result.save(function(err, response){
