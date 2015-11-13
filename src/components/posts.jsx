@@ -19,10 +19,10 @@ module.exports = React.createClass({
       <div className="container">
         <div className="row">
           <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center">
-            <h2>
+            <h1>
               SMS Blog
-            </h2>
-            <h4>A true micro-blog</h4>
+            </h1>
+            <h3>A true "micro" blog</h3>
             <hr />
             <h3>
               Send a text to <strong>1-630-534-1237</strong> with your name and the post title in brackets ([]) followed by your post content!

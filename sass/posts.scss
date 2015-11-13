@@ -8,3 +8,16 @@
   background-color: white;
   padding: 30px
 }
+
+.post {
+  transform: scale(1);
+
+  -webkit-transition: transform 0.15s ease-in-out;
+  -moz-transition: transform 0.15s ease-in-out;
+  -ms-transition: transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out;
+}
+
+.post:hover {
+  transform: scale(1.05);
+}

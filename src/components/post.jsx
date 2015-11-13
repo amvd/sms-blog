@@ -4,7 +4,7 @@ module.exports = React.createClass({
 
   render() {
     return (<div className="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-      <div className="panel panel-primary">
+      <div className="panel panel-primary post">
         <div className="panel-heading">
           <h4>{this.props.title}</h4>
         </div>

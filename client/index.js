@@ -39032,7 +39032,7 @@ module.exports = React.createClass({displayName: "exports",
 
   render() {
     return (React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 col-lg-4"}, 
-      React.createElement("div", {className: "panel panel-primary"}, 
+      React.createElement("div", {className: "panel panel-primary post"}, 
         React.createElement("div", {className: "panel-heading"}, 
           React.createElement("h4", null, this.props.title)
         ), 
@@ -39070,10 +39070,10 @@ module.exports = React.createClass({displayName: "exports",
       React.createElement("div", {className: "container"}, 
         React.createElement("div", {className: "row"}, 
           React.createElement("div", {className: "col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center"}, 
-            React.createElement("h2", null, 
+            React.createElement("h1", null, 
               "SMS Blog"
             ), 
-            React.createElement("h4", null, "A true micro-blog"), 
+            React.createElement("h3", null, "A true \"micro\" blog"), 
             React.createElement("hr", null), 
             React.createElement("h3", null, 
               "Send a text to ", React.createElement("strong", null, "1-630-534-1237"), " with your name and the post title in brackets ([]) followed by your post content!"
