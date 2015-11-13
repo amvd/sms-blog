@@ -16,29 +16,36 @@ module.exports = React.createClass({
 
   render() {
     return (<div>
-      <div className="row">
-        <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center">
-          <h2>
-            Enter a new post!
-          </h2>
-          <h3>
-            Send a text to <strong>1-630-534-1237</strong> with your name and the post title in brackets ([]) followed by your post content!
-          </h3>
-          <h3>
-            Example: "[Sarah/Hello] Hello, my name is Sarah!"
-          </h3>
-          <br />
-          <h4>Or try it here in the browser:</h4>
-          <p><strong style={{color: 'red'}}>(Note: Currently only verified numbers are enabled with Twilio. Please submit with browser for now.</strong></p>
-            <PostTest />
-          <br />
-          <p>
-            <strong>Tip</strong>: You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time.
-          </p>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center">
+            <h2>
+              SMS Blog
+            </h2>
+            <h4>A true micro-blog</h4>
+            <hr />
+            <h3>
+              Send a text to <strong>1-630-534-1237</strong> with your name and the post title in brackets ([]) followed by your post content!
+            </h3>
+            <h3>
+              Example: "[Sarah/Hello] Hello, my name is Sarah!"
+            </h3>
+            <br />
+            <h4>Or try it here in the browser:</h4>
+            <p><strong style={{color: 'red'}}>(Note: Currently only verified numbers are enabled with Twilio. Please submit with browser for now.</strong></p>
+              <PostTest />
+            <br />
+            <p>
+              <strong>Tip</strong>: You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time.
+            </p>
+          </div>
         </div>
       </div>
-      <br />
-      { this.renderPosts() }
+      <div className="dark-background">
+        <div className="container light-on-dark">
+          { this.renderPosts() }
+        </div>
+      </div>
     </div>)
   },
 

@@ -21,8 +21,8 @@ module.exports = React.createClass({
   },
 
   render(){
-    return (<nav className="navbar navbar-default">
-      <div className="container-fluid">
+    return (<nav className="navbar navbar-inverse">
+      <div className="container">
         <div className="navbar-header">
           <button type="button" className={"navbar-toggle " + (this.state.navCollapsed ? "collapsed" : "") } data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" onClick={this.handleNavClick}>
             <span className="sr-only">Toggle navigation</span>

@@ -38,7 +38,7 @@ module.exports = React.createClass({
 
   render(){
     return (<div>
-      <form onSubmit={this.handleTestSubmit} class="form-group">
+      <form onSubmit={this.handleTestSubmit} className="form-group">
         <textarea className="form-control"
           ref="textBody"
           placeholder="Enter Text Here. Example: '[Michael/Great Day] I had a great day today! This is probably the best day of my life!'" />

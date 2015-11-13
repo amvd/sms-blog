@@ -12,8 +12,13 @@ module.exports = React.createClass({
     return <div>
       <Header />
       { this.content() }
+      <center>
+        <br/>
+        <p>Armand De Asis 2015</p>
+      </center>
     </div>
   },
+
   content() {
     if(this.props.children) {
       return this.props.children

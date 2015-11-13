@@ -38909,8 +38909,8 @@ module.exports = React.createClass({displayName: "exports",
   },
 
   render(){
-    return (React.createElement("nav", {className: "navbar navbar-default"}, 
-      React.createElement("div", {className: "container-fluid"}, 
+    return (React.createElement("nav", {className: "navbar navbar-inverse"}, 
+      React.createElement("div", {className: "container"}, 
         React.createElement("div", {className: "navbar-header"}, 
           React.createElement("button", {type: "button", className: "navbar-toggle " + (this.state.navCollapsed ? "collapsed" : ""), "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1", onClick: this.handleNavClick}, 
             React.createElement("span", {className: "sr-only"}, "Toggle navigation"), 
@@ -38946,9 +38946,14 @@ module.exports = React.createClass({displayName: "exports",
   render() {
     return React.createElement("div", null, 
       React.createElement(Header, null), 
-       this.content() 
+       this.content(), 
+      React.createElement("center", null, 
+        React.createElement("br", null), 
+        React.createElement("p", null, "Armand De Asis 2015")
+      )
     )
   },
+
   content() {
     if(this.props.children) {
       return this.props.children
@@ -39004,7 +39009,7 @@ module.exports = React.createClass({displayName: "exports",
 
   render(){
     return (React.createElement("div", null, 
-      React.createElement("form", {onSubmit: this.handleTestSubmit, class: "form-group"}, 
+      React.createElement("form", {onSubmit: this.handleTestSubmit, className: "form-group"}, 
         React.createElement("textarea", {className: "form-control", 
           ref: "textBody", 
           placeholder: "Enter Text Here. Example: '[Michael/Great Day] I had a great day today! This is probably the best day of my life!'"}), 
@@ -39062,29 +39067,36 @@ module.exports = React.createClass({displayName: "exports",
 
   render() {
     return (React.createElement("div", null, 
-      React.createElement("div", {className: "row"}, 
-        React.createElement("div", {className: "col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center"}, 
-          React.createElement("h2", null, 
-            "Enter a new post!"
-          ), 
-          React.createElement("h3", null, 
-            "Send a text to ", React.createElement("strong", null, "1-630-534-1237"), " with your name and the post title in brackets ([]) followed by your post content!"
-          ), 
-          React.createElement("h3", null, 
-            "Example: \"[Sarah/Hello] Hello, my name is Sarah!\""
-          ), 
-          React.createElement("br", null), 
-          React.createElement("h4", null, "Or try it here in the browser:"), 
-          React.createElement("p", null, React.createElement("strong", {style: {color: 'red'}}, "(Note: Currently only verified numbers are enabled with Twilio. Please submit with browser for now.")), 
-            React.createElement(PostTest, null), 
-          React.createElement("br", null), 
-          React.createElement("p", null, 
-            React.createElement("strong", null, "Tip"), ": You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time."
+      React.createElement("div", {className: "container"}, 
+        React.createElement("div", {className: "row"}, 
+          React.createElement("div", {className: "col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center"}, 
+            React.createElement("h2", null, 
+              "SMS Blog"
+            ), 
+            React.createElement("h4", null, "A true micro-blog"), 
+            React.createElement("hr", null), 
+            React.createElement("h3", null, 
+              "Send a text to ", React.createElement("strong", null, "1-630-534-1237"), " with your name and the post title in brackets ([]) followed by your post content!"
+            ), 
+            React.createElement("h3", null, 
+              "Example: \"[Sarah/Hello] Hello, my name is Sarah!\""
+            ), 
+            React.createElement("br", null), 
+            React.createElement("h4", null, "Or try it here in the browser:"), 
+            React.createElement("p", null, React.createElement("strong", {style: {color: 'red'}}, "(Note: Currently only verified numbers are enabled with Twilio. Please submit with browser for now.")), 
+              React.createElement(PostTest, null), 
+            React.createElement("br", null), 
+            React.createElement("p", null, 
+              React.createElement("strong", null, "Tip"), ": You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time."
+            )
           )
         )
       ), 
-      React.createElement("br", null), 
-       this.renderPosts() 
+      React.createElement("div", {className: "dark-background"}, 
+        React.createElement("div", {className: "container light-on-dark"}, 
+           this.renderPosts() 
+        )
+      )
     ))
   },
 
