@@ -14,9 +14,7 @@ module.exports = React.createClass({
     event.preventDefault();
 
     var sms = {
-      body: {
-        Body: React.findDOMNode(this.refs.textBody).value.trim()
-      }
+      Body: React.findDOMNode(this.refs.textBody).value.trim()
     }
 
     $.ajax({

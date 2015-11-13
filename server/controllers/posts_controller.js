@@ -5,7 +5,7 @@ var Posts = mongoose.model("Posts");
 module.exports = (function(){
 
   return {
-    addToPost(req,res){
+    addToPost(req,res, io, socket){
       console.log("DING controller addToPost");
       // res.header('Content-Type', 'json');
       console.log("msg:",req.body.Body);
@@ -44,6 +44,7 @@ module.exports = (function(){
                 console.log("Error: Post could not be added.");
               } else {
                 console.log("Response:", response);
+                io.emit('new post', response);
                 res.json(response);
               }
             })
@@ -55,13 +56,24 @@ module.exports = (function(){
                 console.log("Error: Post could not be added.");
               } else {
                 console.log("Post updated:", response);
+                io.emit('post updated', response);
                 res.json(response);
               }
             })
           }
         }
       })
+    },
 
+    getAllPosts(req, res){
+      Posts.find({}, function(err, results){
+        if(err){
+          console.log("Error:", err);
+        } else {
+          console.log("retrieved posts");
+          res.json(results);
+        }
+      })
     }
   }
 

@@ -2,12 +2,15 @@ var React = require("react");
 
 var Header = require("./header");
 
+var Posts = require("./posts");
+
+var io = require("socket.io-client");
+var socket = io.connect();
 
 module.exports = React.createClass({
   render() {
     return <div>
       <Header />
-      <h1>Hi.</h1>
       { this.content() }
     </div>
   },
@@ -15,7 +18,12 @@ module.exports = React.createClass({
     if(this.props.children) {
       return this.props.children
     } else {
-      return <h1>You are awesome.</h1>
+      return <Posts io={io} socket={socket} />
     }
+  },
+  componentDidMount(){
+    socket.on("connect", function(){
+      console.log("Connected!");
+    })
   }
 })
