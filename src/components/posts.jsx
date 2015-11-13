@@ -25,7 +25,7 @@ module.exports = React.createClass({
             <h3>A true "micro" blog</h3>
             <hr />
             <h3>
-              Send a text to <strong>1-630-534-1237</strong> with your name and the post title in brackets ([]) followed by your post content!
+              Send a text to <strong><a href="tel:+16305341237">1-630-534-1237</a></strong> with your name and the post title in brackets ([]) followed by your post content!
             </h3>
             <h3>
               Example: "[Sarah/Hello] Hello, my name is Sarah!"

@@ -39076,7 +39076,7 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("h3", null, "A true \"micro\" blog"), 
             React.createElement("hr", null), 
             React.createElement("h3", null, 
-              "Send a text to ", React.createElement("strong", null, "1-630-534-1237"), " with your name and the post title in brackets ([]) followed by your post content!"
+              "Send a text to ", React.createElement("strong", null, React.createElement("a", {href: "tel:+16305341237"}, "1-630-534-1237")), " with your name and the post title in brackets ([]) followed by your post content!"
             ), 
             React.createElement("h3", null, 
               "Example: \"[Sarah/Hello] Hello, my name is Sarah!\""
