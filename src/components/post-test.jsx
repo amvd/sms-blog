@@ -38,13 +38,12 @@ module.exports = React.createClass({
 
   render(){
     return (<div>
-      <h1>Test Post</h1>
-      <form onSubmit={this.handleTestSubmit}>
-        <textarea
+      <form onSubmit={this.handleTestSubmit} class="form-group">
+        <textarea className="form-control"
           ref="textBody"
-          placeholder="Message body." />
+          placeholder="Enter Text Here. Example: '[Michael/Great Day] I had a great day today! This is probably the best day of my life!'" />
         <br />
-        <input type="submit" value="Submit" />
+        <input className="btn btn-primary" type="submit" value="Submit" />
       </form>
       <div>{ this.state.sentState }</div>
     </div>)

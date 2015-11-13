@@ -38892,16 +38892,43 @@ var Router = require("react-router");
 var Link = Router.Link;
 
 module.exports = React.createClass({displayName: "exports",
+
+  getInitialState(){
+    return {
+      navCollapsed: true
+    }
+  },
+
+  handleNavClick(){
+    console.log("clicked");
+    this.setState({
+      navCollapsed: !this.state.navCollapsed
+    });
+
+    console.log("navCollapsed?", this.state.navCollapsed);
+  },
+
   render(){
-    return React.createElement("div", null, 
-      React.createElement(Link, {to: "/"}, "Home"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "profile"}, "Profile"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "send"}, "Send SMS"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "test"}, "Test SMS")
-    )
+    return (React.createElement("nav", {className: "navbar navbar-default"}, 
+      React.createElement("div", {className: "container-fluid"}, 
+        React.createElement("div", {className: "navbar-header"}, 
+          React.createElement("button", {type: "button", className: "navbar-toggle " + (this.state.navCollapsed ? "collapsed" : ""), "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1", onClick: this.handleNavClick}, 
+            React.createElement("span", {className: "sr-only"}, "Toggle navigation"), 
+            React.createElement("span", {className: "icon-bar"}), 
+            React.createElement("span", {className: "icon-bar"}), 
+            React.createElement("span", {className: "icon-bar"})
+          ), 
+          React.createElement(Link, {className: "navbar-brand", to: "/"}, "Home")
+        ), 
+        React.createElement("div", {className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1"}, 
+          React.createElement("ul", {className: "nav navbar-nav"}, 
+            React.createElement("li", null, React.createElement(Link, {to: "profile"}, "Profile")), 
+            React.createElement("li", null, React.createElement(Link, {to: "send"}, "Send SMS")), 
+            React.createElement("li", null, React.createElement(Link, {to: "test"}, "Test SMS"))
+          )
+        )
+      )
+    ))
   }
 })
 
@@ -38977,13 +39004,12 @@ module.exports = React.createClass({displayName: "exports",
 
   render(){
     return (React.createElement("div", null, 
-      React.createElement("h1", null, "Test Post"), 
-      React.createElement("form", {onSubmit: this.handleTestSubmit}, 
-        React.createElement("textarea", {
+      React.createElement("form", {onSubmit: this.handleTestSubmit, class: "form-group"}, 
+        React.createElement("textarea", {className: "form-control", 
           ref: "textBody", 
-          placeholder: "Message body."}), 
+          placeholder: "Enter Text Here. Example: '[Michael/Great Day] I had a great day today! This is probably the best day of my life!'"}), 
         React.createElement("br", null), 
-        React.createElement("input", {type: "submit", value: "Submit"})
+        React.createElement("input", {className: "btn btn-primary", type: "submit", value: "Submit"})
       ), 
       React.createElement("div", null,  this.state.sentState)
     ))
@@ -38994,10 +39020,37 @@ module.exports = React.createClass({displayName: "exports",
   }
 })
 
-},{"jquery":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/jquery/dist/jquery.js","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/posts.jsx":[function(require,module,exports){
+},{"jquery":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/jquery/dist/jquery.js","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/post.jsx":[function(require,module,exports){
+var React = require("react");
+
+module.exports = React.createClass({displayName: "exports",
+
+  render() {
+    return (React.createElement("div", {className: "col-md-4 col-sm-4 col-xs-4 col-lg-4"}, 
+      React.createElement("div", {className: "panel panel-primary"}, 
+        React.createElement("div", {className: "panel-heading"}, 
+          React.createElement("h4", null, this.props.title)
+        ), 
+        React.createElement("div", {className: "panel-body"}, 
+          React.createElement("p", null, "Content: ", this.props.body)
+        ), 
+        React.createElement("div", {className: "panel-footer"}, 
+          React.createElement("strong", null, "By:"), " ", this.props.author
+        )
+      )
+    ))
+  }
+
+})
+
+},{"react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/posts.jsx":[function(require,module,exports){
 var React = require("react");
 
 var $ = require("jquery");
+
+var PostTest = require("./post-test");
+
+var Post = require("./post");
 
 module.exports = React.createClass({displayName: "exports",
 
@@ -39009,24 +39062,34 @@ module.exports = React.createClass({displayName: "exports",
 
   render() {
     return (React.createElement("div", null, 
+      React.createElement("div", {className: "row"}, 
+        React.createElement("div", {className: "col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-8 col-xs-offset-2 text-center"}, 
+          React.createElement("h2", null, 
+            "Enter a new post!"
+          ), 
+          React.createElement("h3", null, 
+            "Send a text to ", React.createElement("strong", null, "1-630-534-1237"), " with your name and the post title in brackets ([]) followed by your post content!"
+          ), 
+          React.createElement("h3", null, 
+            "Example: \"[Sarah/Hello] Hello, my name is Sarah!\""
+          ), 
+          React.createElement("br", null), 
+          React.createElement("h4", null, "Or try it here in the browser:"), 
+            React.createElement(PostTest, null), 
+          React.createElement("br", null), 
+          React.createElement("p", null, 
+            "Tip: You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time."
+          )
+        )
+      ), 
+      React.createElement("br", null), 
        this.renderPosts() 
     ))
   },
 
   renderPosts(){
     return this.state.posts.slice(0,20).map(function(post){
-      return React.createElement("div", {key: post._id, 
-        className: "col-md-4 col-sm-4 col-xs-4 col-lg-4"}, 
-        React.createElement("div", {className: "panel panel-default"}, 
-          React.createElement("div", {className: "panel-heading"}, 
-            React.createElement("h3", null, post.title)
-          ), 
-          React.createElement("div", {className: "panel-body"}, 
-            React.createElement("p", null, "Author: ", post.author), 
-            React.createElement("p", null, "Content: ", post.body)
-          )
-        )
-      )
+      return React.createElement(Post, React.__spread({key: post._id},  post))
     })
   },
 
@@ -39062,7 +39125,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 })
 
-},{"jquery":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/jquery/dist/jquery.js","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/profile.jsx":[function(require,module,exports){
+},{"./post":"/home/armand/Documents/CODING/Projects/text-blog/src/components/post.jsx","./post-test":"/home/armand/Documents/CODING/Projects/text-blog/src/components/post-test.jsx","jquery":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/jquery/dist/jquery.js","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/profile.jsx":[function(require,module,exports){
 var React = require("react");
 
 
