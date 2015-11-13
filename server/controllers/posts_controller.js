@@ -8,7 +8,9 @@ module.exports = (function(){
     addToPost(req,res){
       console.log("DING controller addToPost");
       // res.header('Content-Type', 'json');
-      var msg = req.body.message;
+      console.log("msg:",req.body.Body);
+
+      var msg = req.body.Body;
 
       // Extract Post Info
 
