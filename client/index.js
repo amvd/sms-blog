@@ -31901,7 +31901,9 @@ module.exports = React.createClass({displayName: "exports",
       React.createElement("br", null), 
       React.createElement(Link, {to: "profile"}, "Profile"), 
       React.createElement("br", null), 
-      React.createElement(Link, {to: "send"}, "Send SMS")
+      React.createElement(Link, {to: "send"}, "Send SMS"), 
+      React.createElement("br", null), 
+      React.createElement(Link, {to: "test"}, "Test SMS")
     )
   }
 })
@@ -31929,7 +31931,65 @@ module.exports = React.createClass({displayName: "exports",
   }
 })
 
-},{"./header":"/home/armand/Documents/CODING/Projects/text-blog/src/components/header.jsx","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/profile.jsx":[function(require,module,exports){
+},{"./header":"/home/armand/Documents/CODING/Projects/text-blog/src/components/header.jsx","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/post-test.jsx":[function(require,module,exports){
+var React = require("react");
+
+var $ = require("jquery");
+
+module.exports = React.createClass({displayName: "exports",
+
+  getInitialState(){
+    return {
+      sentState: ""
+    }
+  },
+
+  handleTestSubmit(){
+    event.preventDefault();
+
+    var sms = {
+      message: React.findDOMNode(this.refs.textBody).value.trim()
+    }
+
+    $.ajax({
+      url: "/sms-receive",
+      dataType: 'json',
+      type: 'POST',
+      data: sms,
+      success: function(response) {
+        console.log(response);
+        this.setState({sentState: "Sent!"});
+        React.findDOMNode(this.refs.textBody).value = "";
+      }.bind(this),
+
+      error: function(xhr, status, err) {
+        this.setState({sentState: "Problem sending."});
+      }.bind(this)
+    });
+
+    setTimeout(this.clearSentState, 4000);
+  },
+
+  render(){
+    return (React.createElement("div", null, 
+      React.createElement("h1", null, "Test Post"), 
+      React.createElement("form", {onSubmit: this.handleTestSubmit}, 
+        React.createElement("textarea", {
+          ref: "textBody", 
+          placeholder: "Message body."}), 
+        React.createElement("br", null), 
+        React.createElement("input", {type: "submit", value: "Submit"})
+      ), 
+      React.createElement("div", null,  this.state.sentState)
+    ))
+  },
+
+  clearSentState(){
+    this.setState({ sentState: ""});
+  }
+})
+
+},{"jquery":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/jquery/dist/jquery.js","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js"}],"/home/armand/Documents/CODING/Projects/text-blog/src/components/profile.jsx":[function(require,module,exports){
 var React = require("react");
 
 
@@ -32021,17 +32081,19 @@ var HashHistory = require("react-router/lib/HashHistory");
 var Main = require("./components/main");
 var Profile = require("./components/profile");
 var SMSForm = require("./components/smsForm");
+var PostTest = require("./components/post-test");
 
 module.exports = (
   React.createElement(Router, {history: new HashHistory}, 
     React.createElement(Route, {path: "/", component: Main}, 
       React.createElement(Route, {path: "profile", component: Profile}), 
-      React.createElement(Route, {path: "send", component: SMSForm})
+      React.createElement(Route, {path: "send", component: SMSForm}), 
+      React.createElement(Route, {path: "test", component: PostTest})
     )
   )
 );
 
-},{"./components/main":"/home/armand/Documents/CODING/Projects/text-blog/src/components/main.jsx","./components/profile":"/home/armand/Documents/CODING/Projects/text-blog/src/components/profile.jsx","./components/smsForm":"/home/armand/Documents/CODING/Projects/text-blog/src/components/smsForm.jsx","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js","react-router":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react-router/lib/index.js","react-router/lib/HashHistory":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react-router/lib/HashHistory.js"}]},{},["./src/app.jsx"])
+},{"./components/main":"/home/armand/Documents/CODING/Projects/text-blog/src/components/main.jsx","./components/post-test":"/home/armand/Documents/CODING/Projects/text-blog/src/components/post-test.jsx","./components/profile":"/home/armand/Documents/CODING/Projects/text-blog/src/components/profile.jsx","./components/smsForm":"/home/armand/Documents/CODING/Projects/text-blog/src/components/smsForm.jsx","react":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react/react.js","react-router":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react-router/lib/index.js","react-router/lib/HashHistory":"/home/armand/Documents/CODING/Projects/text-blog/node_modules/react-router/lib/HashHistory.js"}]},{},["./src/app.jsx"])
 
 
 //# sourceMappingURL=index.js.map

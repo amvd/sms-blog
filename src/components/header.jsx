@@ -11,6 +11,8 @@ module.exports = React.createClass({
       <Link to={"profile"}>Profile</Link>
       <br />
       <Link to={"send"}>Send SMS</Link>
+      <br />
+      <Link to={"test"}>Test SMS</Link>
     </div>
   }
 })

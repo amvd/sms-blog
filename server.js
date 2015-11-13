@@ -9,6 +9,8 @@ app.use(express.static(path.join(__dirname, "./client")));
 
 // require mongoose and routes here
 
+require("./config/mongoose.js");
+
 var routes = require("./config/routes.js")(app);
 
 var port = process.env.PORT || 7000;
