@@ -29,10 +29,11 @@ module.exports = React.createClass({
           </h3>
           <br />
           <h4>Or try it here in the browser:</h4>
+          <p><strong style={{color: 'red'}}>(Note: Currently only verified numbers are enabled with Twilio. Please submit with browser for now.</strong></p>
             <PostTest />
           <br />
           <p>
-            Tip: You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time.
+            <strong>Tip</strong>: You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time.
           </p>
         </div>
       </div>

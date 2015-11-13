@@ -9,7 +9,7 @@ module.exports = React.createClass({
           <h4>{this.props.title}</h4>
         </div>
         <div className="panel-body">
-          <p>Content: {this.props.body}</p>
+          <p>{this.props.body}</p>
         </div>
         <div className="panel-footer">
           <strong>By:</strong> {this.props.author}

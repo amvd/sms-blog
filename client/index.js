@@ -39032,7 +39032,7 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("h4", null, this.props.title)
         ), 
         React.createElement("div", {className: "panel-body"}, 
-          React.createElement("p", null, "Content: ", this.props.body)
+          React.createElement("p", null, this.props.body)
         ), 
         React.createElement("div", {className: "panel-footer"}, 
           React.createElement("strong", null, "By:"), " ", this.props.author
@@ -39075,10 +39075,11 @@ module.exports = React.createClass({displayName: "exports",
           ), 
           React.createElement("br", null), 
           React.createElement("h4", null, "Or try it here in the browser:"), 
+          React.createElement("p", null, React.createElement("strong", {style: {color: 'red'}}, "(Note: Currently only verified numbers are enabled with Twilio. Please submit with browser for now.")), 
             React.createElement(PostTest, null), 
           React.createElement("br", null), 
           React.createElement("p", null, 
-            "Tip: You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time."
+            React.createElement("strong", null, "Tip"), ": You can keep adding to the same posts by using the same name and title! Just copy and paste the bracketed part each time."
           )
         )
       ), 
